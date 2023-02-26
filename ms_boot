@@ -1,0 +1,11 @@
+#!ipxe
+
+kernel ${boot-url}/wimboot gui
+initrd ${boot-url}/winpeshl.ini     winpeshl.ini
+initrd ${boot-url}/install.bat      install.bat
+initrd ${boot-url}/installs/windows/win10/boot/bcd         BCD
+initrd ${boot-url}/installs/windows/win10/boot/boot.sdi    boot.sdi
+initrd ${boot-url}/boot.wim boot.wim
+#initrd ${boot-url}/installs/windows/win10/sources/boot.wim boot.wim
+
+boot || goto failed
