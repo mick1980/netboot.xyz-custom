@@ -13,9 +13,9 @@ item win-desk-10 Install Windows 10
 item --gap Windows 11
 item --gap Other Microsoft Windows products and versions
 item win-other-iso Install other Microsoft Windows product or version from URL to ISO
-choose ms_choice || goto custom_exit
+choose ms_choice || goto ms_exit
 echo ${cls}
-goto ${custom_choice}
+goto ${ms_choice}
 goto ms_exit
 
 ##
@@ -29,5 +29,5 @@ wait 10
 goto microsoft
 
 ### Exit
-:microsoft_exit
+:ms_exit
 exit
