@@ -1,0 +1,34 @@
+#!ipxe
+###
+### Microsoft Windows menu
+### GitHub.com/mick1980
+###
+
+:custom
+clear custom_choice
+set boot-url=https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/
+menu Microsoft Windows menu
+item --gap Windows 10
+item win-desk-10 Install Windows 10
+item --gap Windows 11
+item --gap Other Microsoft Windows products and versions
+item win-other-iso Install other Microsoft Windows product or version from URL to ISO
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
+##
+:win-desk-10
+chain ${boot-url}/winboot.ipxe || goto custom
+
+##
+:win-other-iso
+echo Not yet implemented
+wait 10
+goto custom
+
+### Exit
+:custom_exit
+chain utils.ipxe
+exit
